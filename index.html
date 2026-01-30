@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Jolt Energie - Courtier en énergie pour professionnels. Économisez jusqu'à 30% sur vos contrats d'électricité et gaz. Plus de 300 clients satisfaits.">
+    <meta name="keywords" content="courtier énergie, électricité professionnelle, gaz naturel, réduction coûts énergie">
+    <meta property="og:title" content="Jolt Energie - Courtier en Énergie pour Professionnels">
+    <meta property="og:description"
+        content="Optimisez vos contrats d'énergie et faites jusqu'à 30% d'économies. Service personnalisé et gratuit.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Jolt Energie - Courtier en Énergie pour Professionnels | Économies garanties</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <style>
+        :root {
+            /* Light Theme (default) */
+            --primary: #FF7200;
+            --primary-dark: #e55e00;
+            --primary-light: #ff8533;
+            --accent: #22c55e;
+            --accent-dark: #16a34a;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #9ca3af;
+            --text-inverse: #ffffff;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --bg-dark: #0f172a;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary: #ff8533;
+            --primary-dark: #FF7200;
+            --primary-light: #ffa366;
+            --accent: #4ade80;
+            --accent-dark: #22c55e;
+            --text-dark: #f1f5f9;
+            --text-medium: #cbd5e1;
+            --text-light: #94a3b8;
+            --bg-light: #1e293b;
+            --bg-white: #0f172a;
+            --bg-dark: #020617;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --border: #334155;
+            --border-light: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: transparent;
+            color: var(--text-medium);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: block;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:not(.cta-button)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.cta-button):hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:not(.cta-button):hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: var(--text-inverse);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-button-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.6rem 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-secondary:hover {
+            background-color: var(--primary);
+            color: var(--text-inverse);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-inverse);
+            padding: 5rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3.25rem;
+            margin-bottom: 1.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-hero {
+            background-color: var(--text-inverse);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--text-inverse);
+        }
+
+        .cta-button-hero:hover {
+            background-color: transparent;
+            color: var(--text-inverse);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .cta-button-hero-outline {
+            background-color: transparent;
+            color: var(--text-inverse);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-button-hero-outline:hover {
+            background-color: var(--text-inverse);
+            color: var(--primary);
+            border-color: var(--text-inverse);
+            transform: translateY(-3px);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .trust-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background-color: var(--bg-white);
+            transition: background-color 0.3s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-item h2 {
+            font-size: 2.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background-color: var(--bg-light);
+            transition: background-color 0.3s ease;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            transition: color 0.3s ease;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 2.25rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background-color: var(--bg-white);
+            transition: background-color 0.3s ease;
+        }
+
+        .services-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            background-color: var(--bg-light);
+            padding: 1.75rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background-color: var(--bg-card-hover);
+            box-shadow: var(--shadow-lg);
+            transform: translateX(5px);
+        }
+
+        .service-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-item p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 2rem;
+            background-color: var(--bg-light);
+            transition: background-color 0.3s ease;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+        }
+
+        .process-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background-color: var(--primary);
+            color: var(--text-inverse);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .process-card h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .process-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 5rem 2rem;
+            background-color: var(--bg-white);
+            transition: background-color 0.3s ease;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .why-content h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .why-content p {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+
+        .why-list {
+            list-style: none;
+        }
+
+        .why-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-medium);
+            transition: color 0.3s ease;
+        }
+
+        .why-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+        }
+
+        .why-image {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-inverse);
+        }
+
+        .guarantee-badge {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .guarantee-sub {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background-color: var(--bg-light);
+            transition: background-color 0.3s ease;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-inverse);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h4 {
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            transition: color 0.3s ease;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-inverse);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button-large {
+            background-color: var(--text-inverse);
+            color: var(--primary);
+            padding: 1.25rem 2.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-inverse);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--text-inverse);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.25rem;
+            color: var(--accent);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a {
+            color: var(--text-inverse);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .why-image {
+                order: -1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-item h2 {
+                font-size: 2.25rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .trust-bar-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .cta-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="images/logo.png" alt="Jolt Energie Logo">
+            <span class="logo-text">Jolt Energie</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Processus</a></li>
+            <li><a href="#testimonials">Avis</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+            </li>
+            <li><a href="#contact" class="cta-button">Contactez-nous</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎯 +30% d'économies en moyenne</div>
+            <h1>Optimisez Vos Contrats d'Énergie</h1>
+            <p>Courtier expert en énergie pour professionnels. Nous négocions avec plus de 20 fournisseurs pour vous
+                obtenir les meilleurs tarifs en électricité et gaz naturel.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="cta-button-hero">Commencer Gratuitement</a>
+                <a href="#process" class="cta-button-hero-outline">Voir le Processus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="trust-bar-content">
+            <div class="trust-item">
+                <div class="trust-icon">🔒</div>
+                <span>Sans engagement</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">⚡</div>
+                <span>Réponse sous 24h</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🤝</div>
+                <span>20+ fournisseurs</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">✅</div>
+                <span>Analyse gratuite</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>€2.7M</h2>
+                <p>Économies réalisées pour nos clients</p>
+            </div>
+            <div class="stat-item">
+                <h2>300+</h2>
+                <p>Clients satisfaits</p>
+            </div>
+            <div class="stat-item">
+                <h2>20+</h2>
+                <p>Fournisseurs partenaires</p>
+            </div>
+            <div class="stat-item">
+                <h2>3 ans</h2>
+                <p>D'expertise en courtage</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2 class="section-title">Pourquoi Choisir Jolt Energie ?</h2>
+            <p class="section-subtitle">Notre expertise au service de votre rentabilité énergétique</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Réduction de Coûts</h3>
+                <p>Nous négocions avec 20+ fournisseurs pour obtenir les meilleures offres du marché et maximiser vos
+                    économies.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Analyse Détaillée</h3>
+                <p>Audit complet de vos factures et optimisation des coûts de transmission TURPE et taxes énergétiques.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Support Expert Dédié</h3>
+                <p>Un conseiller dédié vous accompagne personnellement tout au long du processus et au-delà.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Transparence Totale</h3>
+                <p>Comparaisons claires et honnêtes des offres sans frais cachés ni surprises.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Rapidité d'Exécution</h3>
+                <p>Processus optimisé et rapide pour mettre en place votre nouveau contrat dans les meilleurs délais.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>Solutions Vertes</h3>
+                <p>Accès privilégié aux offres d'énergie renouvelable pour votre transition écologique.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="why-grid">
+            <div class="why-content">
+                <h2>Une Approche Différente</h2>
+                <p>Chez Jolt Energie, nous mettons notre expertise du marché énergétique au service de votre entreprise
+                    pour des résultats mesurables.</p>
+                <ul class="why-list">
+                    <li>Audit personnalisé gratuit de vos contrats actuels</li>
+                    <li>Comparaison objective de plus de 20 fournisseurs</li>
+                    <li>Négociation active des meilleures conditions</li>
+                    <li>Suivi continu de vos consommations et dépenses</li>
+                    <li>Accompagnement lors de changements réglementaires</li>
+                    <li>Gestion complète des démarches administratives</li>
+                </ul>
+            </div>
+            <div class="why-image">
+                <div class="guarantee-badge">🛡️</div>
+                <div class="guarantee-text">Satisfaction Garantie</div>
+                <div class="guarantee-sub">Ou votre analyse est offerte</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-content">
+            <div class="section-header">
+                <h2 class="section-title">Nos Services</h2>
+                <p class="section-subtitle">Des solutions complètes pour tous vos besoins énergétiques</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>📝 Rénégociation de Contrats</h4>
+                    <p>Optimisez vos contrats existants pour bénéficier de meilleures conditions tarifaires et réduire
+                        vos coûts.</p>
+                </div>
+                <div class="service-item">
+                    <h4>⚙️ Optimisation TURPE</h4>
+                    <p>Réduisez vos coûts de transmission d'électricité grâce à notre expertise pointue du TURPE.</p>
+                </div>
+                <div class="service-item">
+                    <h4>💡 Conseil Énergétique</h4>
+                    <p>Conseils personnalisés pour optimiser votre consommation et vos dépenses énergétiques.</p>
+                </div>
+                <div class="service-item">
+                    <h4>📋 Gestion Administrative</h4>
+                    <p>Nous gérons toutes les démarches administratives pour votre tranquillité totale.</p>
+                </div>
+                <div class="service-item">
+                    <h4>🌍 Énergie Renouvelable</h4>
+                    <p>Accédez à des offres d'électricité et gaz vert pour une transition écologique réussie.</p>
+                </div>
+                <div class="service-item">
+                    <h4>🎯 Solutions Sectorielles</h4>
+                    <p>Services sur-mesure adaptés aux PME, industries, collectivités et copropriétés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="section-header">
+            <h2 class="section-title">Notre Processus en 4 Étapes</h2>
+            <p class="section-subtitle">Simple, transparent et efficace</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card" data-step="1">
+                <h3>Analyse</h3>
+                <p>Audit complet de vos factures actuelles et de vos besoins énergétiques. Identification précise des
+                    opportunités d'économies.</p>
+            </div>
+            <div class="process-card" data-step="2">
+                <h3>Comparaison</h3>
+                <p>Nous comparons les offres des 20+ fournisseurs partenaires pour identifier les meilleures conditions
+                    du marché.</p>
+            </div>
+            <div class="process-card" data-step="3">
+                <h3>Négociation</h3>
+                <p>Nos experts négocient activement les meilleurs tarifs et conditions spécifiques à votre profil et
+                    secteur d'activité.</p>
+            </div>
+            <div class="process-card" data-step="4">
+                <h3>Mise en Place</h3>
+                <p>Gestion complète de l'administration et transition fluide vers votre nouveau contrat énergétique.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-header">
+            <h2 class="section-title">Avis de Nos Clients</h2>
+            <p class="section-subtitle">Découvrez ce que disent les professionnels qui nous font confiance</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">PM</div>
+                    <div class="testimonial-info">
+                        <h4>Pierre Martin</h4>
+                        <p>Directeur, Manufacture Sud-Ouest</p>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Jolt Energie nous a fait économiser plus de €15,000 sur notre contrat
+                    annuel. Service impeccable, rapide et professionnel. Je recommande vivement."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">SL</div>
+                    <div class="testimonial-info">
+                        <h4>Sophie Leroy</h4>
+                        <p>Manager, Tech PME Bordeaux</p>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Support professionnel et réactif. Ils ont vraiment compris nos besoins
+                    spécifiques en tant qu'entreprise tech. Une équipe de confiance."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">JD</div>
+                    <div class="testimonial-info">
+                        <h4>Jean Dupont</h4>
+                        <p>Responsable Achats, Collectivité Locale</p>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Processus transparent et sans frais cachés. La gestion administrative a été
+                    entièrement prise en charge. Resultats au-delà de nos attentes."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à Optimiser Vos Dépenses Énergétiques ?</h2>
+            <p>Contactez-nous dès aujourd'hui pour une analyse gratuite et sans engagement de votre situation
+                énergétique.</p>
+            <button class="cta-button-large" onclick="window.location.href='mailto:contact@joltenergie.com'">
+                Demander Mon Audit Gratuit
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="images/logo.png" alt="Jolt Energie Logo">
+                </a>
+                <p>Votre partenaire de confiance en courtage énergétique pour professionnels depuis 2023.</p>
+
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Rénégociation de Contrats</a></li>
+                    <li><a href="#services">Optimisation TURPE</a></li>
+                    <li><a href="#services">Conseil Énergétique</a></li>
+                    <li><a href="#services">Énergie Renouvelable</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Informations</h4>
+                <ul>
+                    <li><a href="#process">Notre Processus</a></li>
+                    <li><a href="#testimonials">Avis Clients</a></li>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Politique de Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-contact">
+                <h4>Contact</h4>
+                <p>Téléphone: <a href="tel:+33500000000">+33 (0)5 00 00 00 00</a></p>
+                <p>Email: <a href="mailto:contact@joltenergie.com">contact@joltenergie.com</a></p>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Jolt Energie. Tous droits réservés. | Membre du SCE</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (systemPrefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .process-card, .service-item, .testimonial-card, .stat-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
