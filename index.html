@@ -984,6 +984,161 @@
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
         }
+
+        /* Form Section */
+        .form-section {
+            background: var(--primary);
+            background-image: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent);
+            color: var(--text-inverse);
+            margin: 4rem 0;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+            animation: pulse 15s infinite;
+        }
+
+        .form-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-inverse);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-section > p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 1.25rem;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 114, 0, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--text-inverse);
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-privacy {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-section {
+                padding: 3rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .form-section h2 {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -992,7 +1147,7 @@
     <nav>
         <a href="#" class="logo">
             <img src="images/logo.png" alt="Jolt Energie Logo">
-            <span class="logo-text">L'énergie mieux négociée</span>
+
         </a>
         <ul class="nav-links">
             <li><a href="#services">Services</a></li>
@@ -1012,7 +1167,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">🎯 +30% d'économies en moyenne</div>
-            <h1>Optimisez Vos Contrats d'Énergie</h1>
+            <h1>L'énergie mieux négociée</h1>
             <p>Courtier expert en énergie pour professionnels. Nous négocions avec plus de 20 fournisseurs pour vous
                 obtenir les meilleurs tarifs en électricité et gaz naturel.</p>
             <div class="hero-buttons">
@@ -1245,6 +1400,138 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="form" class="form-section">
+        <h2>Demandez Votre Audit Gratuit</h2>
+        <p>Recevez une analyse personnalisée de votre situation énergétique avec les meilleures offres du marché.</p>
+        <div class="form-container">
+            <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="clientType">Vous êtes *</label>
+                    <select id="clientType" name="clientType" required onchange="toggleClientFields()">
+                        <option value="pro">Professionnel</option>
+                        <option value="part">Particulier</option>
+                    </select>
+                </div>
+
+                <div id="proFields">
+                    <div class="form-group">
+                        <label for="company">Nom de l'entreprise *</label>
+                        <input type="text" id="company" name="company" placeholder="Ex: Hôtel Aquitaine">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="siret">SIRET (14 chiffres, facultatif)</label>
+                        <input type="text" id="siret" name="siret" placeholder="123 456 789 00012" pattern="[0-9 \s]{14,20}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sector">Secteur d'activité *</label>
+                        <select id="sector" name="sector">
+                            <option value="">-- Sélectionnez --</option>
+                            <option value="industrie">Industrie</option>
+                            <option value="hotellerie">Hôtellerie</option>
+                            <option value="camping">Camping/Tourisme</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="commerce">Commerce</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Nom et prénom *</label>
+                    <input type="text" id="name" name="name" required placeholder="Jean Dupont">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" id="emailLabel">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="jean@exemple.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="06 12 34 56 78">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="zipcode">Code Postal *</label>
+                        <input type="text" id="zipcode" name="zipcode" required placeholder="33000" pattern="[0-9]{5}">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Ville *</label>
+                        <input type="text" id="city" name="city" required placeholder="Bordeaux">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="occupancyStatus">Vous êtes *</label>
+                    <select id="occupancyStatus" name="occupancyStatus" required>
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="owner">Propriétaire</option>
+                        <option value="tenant">Locataire</option>
+                        <option value="landlord">Bailleur</option>
+                        <option value="roommate">Colocataire</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="energyType">Type d'énergie souhaitée *</label>
+                    <select id="energyType" name="energyType" required onchange="toggleEnergyFields()">
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="electricity">Électricité</option>
+                        <option value="gas">Gaz</option>
+                        <option value="both">Électricité & Gaz</option>
+                    </select>
+                </div>
+
+                <div class="form-group hidden" id="elecGroup">
+                    <label for="elecConsumption">Consommation Électricité annuelle estimée *</label>
+                    <select id="elecConsumption" name="elecConsumption">
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="basse">&lt; 50 MWh/an</option>
+                        <option value="moyenne">50 - 200 MWh/an</option>
+                        <option value="haute">200 - 500 MWh/an</option>
+                        <option value="importante">&gt; 500 MWh/an</option>
+                    </select>
+                </div>
+
+                <div class="form-group hidden" id="pdlGroup">
+                    <label for="pdl">Numéro PDL (Point de Livraison) *</label>
+                    <input type="text" id="pdl" name="pdl" placeholder="14 chiffres">
+                </div>
+
+                <div class="form-group hidden" id="gasGroup">
+                    <label for="gasConsumption">Consommation Gaz annuelle estimée *</label>
+                    <select id="gasConsumption" name="gasConsumption">
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="basse">&lt; 50 MWh/an</option>
+                        <option value="moyenne">50 - 200 MWh/an</option>
+                        <option value="haute">200 - 500 MWh/an</option>
+                        <option value="importante">&gt; 500 MWh/an</option>
+                    </select>
+                </div>
+
+                <div class="form-group hidden" id="pceGroup">
+                    <label for="pce">Numéro PCE (Point Comptage Estimation) *</label>
+                    <input type="text" id="pce" name="pce" placeholder="14 chiffres">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Votre question ou contexte (optionnel)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Ex: Nous renégocions dans 3 mois..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">📨 Recevoir mon audit gratuit</button>
+
+                <p class="form-privacy">
+                    Nous respectons votre confidentialité. Vos données ne seront jamais partagées.
+                </p>
+            </form>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
         <div class="cta-content">
@@ -1350,6 +1637,124 @@
         document.querySelectorAll('.feature-card, .process-card, .service-item, .testimonial-card, .stat-item').forEach(el => {
             observer.observe(el);
         });
+
+        // Form Toggle Functions
+        function toggleClientFields() {
+            const clientType = document.getElementById('clientType').value;
+            const proFields = document.getElementById('proFields');
+            const companyInput = document.getElementById('company');
+            const sectorInput = document.getElementById('sector');
+
+            if (clientType === 'pro') {
+                proFields.style.display = 'block';
+                companyInput.setAttribute('required', 'required');
+                sectorInput.setAttribute('required', 'required');
+            } else {
+                proFields.style.display = 'none';
+                companyInput.removeAttribute('required');
+                sectorInput.removeAttribute('required');
+                companyInput.value = '';
+                sectorInput.value = '';
+            }
+        }
+
+        function toggleEnergyFields() {
+            const energyType = document.getElementById('energyType').value;
+            const elecGroup = document.getElementById('elecGroup');
+            const pdlGroup = document.getElementById('pdlGroup');
+            const gasGroup = document.getElementById('gasGroup');
+            const pceGroup = document.getElementById('pceGroup');
+
+            const elecInputs = elecGroup.querySelectorAll('select, input');
+            const gasInputs = gasGroup.querySelectorAll('select, input');
+
+            // Show/hide electricity fields
+            if (energyType === 'electricity' || energyType === 'both') {
+                elecGroup.classList.remove('hidden');
+                pdlGroup.classList.remove('hidden');
+                elecInputs.forEach(input => input.setAttribute('required', 'required'));
+            } else {
+                elecGroup.classList.add('hidden');
+                pdlGroup.classList.add('hidden');
+                elecInputs.forEach(input => {
+                    input.removeAttribute('required');
+                    input.value = '';
+                });
+                document.getElementById('pdl').value = '';
+            }
+
+            // Show/hide gas fields
+            if (energyType === 'gas' || energyType === 'both') {
+                gasGroup.classList.remove('hidden');
+                pceGroup.classList.remove('hidden');
+                gasInputs.forEach(input => input.setAttribute('required', 'required'));
+            } else {
+                gasGroup.classList.add('hidden');
+                pceGroup.classList.add('hidden');
+                gasInputs.forEach(input => {
+                    input.removeAttribute('required');
+                    input.value = '';
+                });
+                document.getElementById('pce').value = '';
+            }
+        }
+
+        // Form Submit Handler
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = form.querySelector('.btn-submit');
+
+            // Disable button and show loading state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '⌛ Envoi en cours...';
+
+            // Collect form data
+            const formData = {
+                clientType: document.getElementById('clientType').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                zipcode: document.getElementById('zipcode').value,
+                city: document.getElementById('city').value,
+                occupancyStatus: document.getElementById('occupancyStatus').value,
+                energyType: document.getElementById('energyType').value,
+                elecConsumption: document.getElementById('elecConsumption').value,
+                pdl: document.getElementById('pdl').value,
+                gasConsumption: document.getElementById('gasConsumption').value,
+                pce: document.getElementById('pce').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Add pro fields if applicable
+            if (formData.clientType === 'pro') {
+                formData.company = document.getElementById('company').value;
+                formData.siret = document.getElementById('siret').value;
+                formData.sector = document.getElementById('sector').value;
+            }
+
+            // Log form data (replace with actual submission)
+            console.log('Form submitted:', formData);
+
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Show success message
+            submitBtn.innerHTML = '✓ Envoyé avec succès !';
+            submitBtn.style.backgroundColor = '#22c55e';
+
+            // Reset form after delay
+            setTimeout(() => {
+                form.reset();
+                toggleClientFields();
+                toggleEnergyFields();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.style.backgroundColor = '';
+            }, 3000);
+        }
     </script>
 </body>
 
